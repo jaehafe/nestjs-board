@@ -21,7 +21,7 @@ export class BoardsController {
   }
 
   @Post('/')
-  createBoards(@Body() createBoardDto: CreateBoardDto): Board {
+  createBoard(@Body() createBoardDto: CreateBoardDto): Board {
     return this.boardsService.createBoard(createBoardDto);
   }
 
