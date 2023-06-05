@@ -5,6 +5,7 @@ import { CreateBoardDto } from './dto/create-board.dto';
 
 import { BoardRepository } from './board.repository';
 import { Board } from './board.entity';
+import { User } from 'src/auth/user.entity';
 
 // 다른 곳에서도 주입해서 사용할 수 있게 @Injectable 데코레이터 사용
 @Injectable()
@@ -14,8 +15,11 @@ export class BoardsService {
     private boardRepository: BoardRepository,
   ) {}
 
-  async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
-    return await this.boardRepository.createBoard(createBoardDto);
+  async createBoard(
+    createBoardDto: CreateBoardDto,
+    user: User,
+  ): Promise<Board> {
+    return await this.boardRepository.createBoard(createBoardDto, user);
   }
 
   async getBoardById(id: number): Promise<Board> {

@@ -20,7 +20,7 @@ export class User extends BaseEntity {
   @Column()
   password: string;
 
-  // eager: true User정보를 가져올 떄 Board정보도 같이 가져옴
+  // eager: true User정보를 가져올 떄 Board 정보도 같이 가져옴
   @OneToMany(() => Board, (board) => board.user, { eager: true })
   boards: Board[];
 }
