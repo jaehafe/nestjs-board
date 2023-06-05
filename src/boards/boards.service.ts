@@ -8,7 +8,7 @@ import { Board } from './board.entity';
 @Injectable()
 export class BoardsService {
   constructor(
-    @InjectRepository(BoardRepository)
+    // @InjectRepository(BoardRepository)
     private boardRepository: BoardRepository,
   ) {}
 
