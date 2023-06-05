@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Logger,
   Param,
   ParseIntPipe,
   Patch,
@@ -23,6 +24,8 @@ import { BoardStatusValidationPipe } from './pipes/board-status-validation-pipe'
 @Controller('boards')
 @UseGuards(AuthGuard())
 export class BoardsController {
+  private logger = new Logger('BoardsController');
+
   constructor(private boardsService: BoardsService) {}
 
   @Get('/')
@@ -32,6 +35,7 @@ export class BoardsController {
 
   @Get('/user')
   getAllBoardsByUser(@GetUser() user: User): Promise<Board[]> {
+    this.logger.verbose(`User ${user.username} trying to get all boards`);
     return this.boardsService.getAllBoardsByUser(user);
   }
 
