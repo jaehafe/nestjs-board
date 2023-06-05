@@ -1,10 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+
 import { BoardStatus } from './board-status.enum';
 import { CreateBoardDto } from './dto/create-board.dto';
-import { InjectRepository } from '@nestjs/typeorm';
+
 import { BoardRepository } from './board.repository';
 import { Board } from './board.entity';
 
+// 다른 곳에서도 주입해서 사용할 수 있게 @Injectable 데코레이터 사용
 @Injectable()
 export class BoardsService {
   constructor(
