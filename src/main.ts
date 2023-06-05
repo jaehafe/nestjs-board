@@ -6,6 +6,7 @@ import { Logger } from '@nestjs/common';
 declare const module: any;
 
 async function bootstrap() {
+  const logger = new Logger();
   const app = await NestFactory.create(AppModule);
 
   const port = process.env.PORT || 3000;
@@ -25,6 +26,6 @@ async function bootstrap() {
     module.hot.dispose(() => app.close());
   }
 
-  Logger.log(`listening on port ${port}`);
+  logger.log(`listening on port ${port}`);
 }
 bootstrap();
