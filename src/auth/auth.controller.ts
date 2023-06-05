@@ -10,6 +10,8 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { AuthCredentialsDto } from './dto/auth-credential.dto';
+import { GetUser } from './get-user.decorator';
+import { User } from './user.entity';
 
 @ApiTags('AUTH')
 @Controller('auth')
@@ -43,8 +45,7 @@ export class AuthController {
   // AuthGuard
   @Post('/test')
   @UseGuards(AuthGuard())
-  test(@Req() req) {
-    // console.log('AuthGuard()', AuthGuard);
-    // console.log('req=', req);
+  test(@GetUser() user: User) {
+    console.log('user=', user);
   }
 }
